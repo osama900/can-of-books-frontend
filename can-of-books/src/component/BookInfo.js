@@ -1,43 +1,32 @@
 import React from "react";
-import axios from "axios";
+
 
 import Card from "react-bootstrap/Card";
 
 class BookInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      BooksData: [],
-    };
   }
 
-  componentDidMount = () => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/books`)
-      .then((book) => {
-        console.log(book);
-        this.setState({ BooksData: book.data });
-      })
-      .catch((error) => alert(error.message));
-  };
+
   render() {
     return (
-      this.state.BooksData.length > 0 && (
+      this.props.BooksData.length > 0 && (
         <>
-          {this.state.BooksData.map((book) => {
+          {this.props.BooksData.map((book, idx) => {
             return (
-              <>
+              <div key={idx}>
                 <Card style={{ width: "18rem" }}>
-                  <Card.Body>
+                  <Card.Body key={idx}>
                     <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>
-                      <p>{book.description}</p>
-                      <p>{book.status}</p>
-                      <p>{book.email}</p>
-                    </Card.Text>
+
+                    <p>{book.description}</p>
+                    <p>{book.status}</p>
+                    <p>{book.email}</p>
+
                   </Card.Body>
                 </Card>
-              </>
+              </div>
             );
           })}
         </>

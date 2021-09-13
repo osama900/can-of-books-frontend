@@ -19,7 +19,9 @@ class Header extends React.Component {
             profile
           </Link>
         </NavItem>
-        <Login />
+        <Login 
+        componentDidMount={this.props.componentDidMount}
+        />
       </Navbar>
     );
   }
