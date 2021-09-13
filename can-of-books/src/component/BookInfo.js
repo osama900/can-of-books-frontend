@@ -14,16 +14,17 @@ class BookInfo extends React.Component {
   componentDidMount = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/books`)
-      .then((BooksData) => {
-        this.setState({ BooksData: Response.data });
+      .then((book) => {
+        console.log(book);
+        this.setState({ BooksData: book.data });
       })
       .catch((error) => alert(error.message));
   };
   render() {
     return (
-      this.state.booksData.length > 0 && (
+      this.state.BooksData.length > 0 && (
         <>
-          {this.state.booksData.map((book) => {
+          {this.state.BooksData.map((book) => {
             return (
               <>
                 <Card style={{ width: "18rem" }}>
