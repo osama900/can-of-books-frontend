@@ -2,7 +2,7 @@ import { Component } from "react";
 
 class Profile extends Component {
   render() {
-    return <p>Profile page coming soon</p>;
+    return <h1> coming soon</h1>;
   }
 }
 
