@@ -1,20 +1,50 @@
 import React from "react";
-import LoginButton from "./LoginButton";
-import Card from "react-bootstrap/Card";
-// import './login.css';
+
+
+
 
 class Login extends React.Component {
-  render() {
-    return (
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>Log In</Card.Title>
-          <Card.Text> Log In </Card.Text>
-          <LoginButton />
-        </Card.Body>
-      </Card>
-    );
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showForm: false,
+
+    };
   }
-}
+  handelLogin = () => {
+    this.setState({
+      showForm: true
+    })
+  };
+
+  getData = async (e) => {
+    e.preventDefault();
+
+    let UserEmail = e.target.Email.value;
+    console.log(UserEmail);
+    this.props.componentDidMount(UserEmail)
+  }
+
+
+    render() {
+      return (
+        <>
+          {(this.state.showForm !== 0) &&
+            < button onClick={this.handelLogin} >
+              log in
+            </button>
+          }
+          {this.state.showForm &&
+            < form onSubmit={this.getData}>
+              <label>Enter your Email and User Name</label>
+              <input type="text" name='Email' placeholder='Enter your Email       ' />
+              <input type="text" name='User name' placeholder='Enter your User Name' />
+              <input type="submit" value="Log in" />
+            </form>}
+        </>
+      );
+    }
+  }
 
 export default Login;
