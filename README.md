@@ -15,6 +15,8 @@
 
 ## Architecture
 
+we will use react and react bootstrap axios
+
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
